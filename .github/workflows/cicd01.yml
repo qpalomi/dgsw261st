@@ -22,3 +22,9 @@ jobs:
         run: | 
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
+          echo "3. 워크플로우 실행한 곳 : $GITHUB_ACTOR"
+          echo "4. 현제 실행중인 브랜치 : $GITHUB_REF_NAME"
+          echo "5. 현제 실행중인 브랜치 : $GITHUB_RUN_NUMBER"
+          echo "6. 현제 실행중인 브랜치 : $GITHUB_EVENT_NAME"
+          echo "7. 현제 실행중인 브랜치 : $GITHUB_OS"
+          echo "8. 현제 실행중인 브랜치 : $GITHUB_WORKSPACE"
