@@ -33,3 +33,8 @@ jobs:
         run: |
           echo "${{ secrets.MY_AGE }}"
           echo "${{ secrets.MY_PAY }}"
+          
+      - name: variables 변수 사용
+        run: |
+          echo "${{ vars.MY_GRADE }}"
+          echo "${{ vars.MY_HEIGHT }}"
