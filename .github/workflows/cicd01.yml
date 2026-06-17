@@ -28,3 +28,8 @@ jobs:
           echo "6. 현재 실행 이벤트 : $GITHUB_EVENT_NAME"
           echo "7. 현재 실행중인 OS : $RUNNER_OS"
           echo "8. 기본 작업 경로 : $GITHUB_WORKSPACE"
+
+      - name: secrets 변수 사용
+        run: |
+          echo "${{ secrets.MY_AGE }}"
+          echo "${{ secrets.MY_PAY }}"
