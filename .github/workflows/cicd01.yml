@@ -12,3 +12,8 @@ jobs:
     steps:
       - name: Hello World 출력
         run: echo "Hello World"
+
+      - name: 여러게 명령어 추가하기
+        run: |
+          echo "Good"
+          echo "Morning"
