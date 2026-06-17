@@ -17,3 +17,8 @@ jobs:
         run: |
           echo "Good"
           echo "Morning"
+
+      - name: 깃허브의 내장변수 사용
+        run: | 
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
