@@ -9,7 +9,7 @@ public class AppController {
     @GetMapping("/")
     public String Hello() {
         int test=0;
-        return "Hello Spring Boot";
+        return "Hello Spring Boot CICD 01";
     }
 
 }
