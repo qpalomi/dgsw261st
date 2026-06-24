@@ -12,14 +12,23 @@ jobs:
     steps:
       - name: EC2에 접속하기
         uses: appleboy/ssh-action@v1.2.2
+        env:
+          APPLICATION_PROPERTIES: ${{ secrets.APPLICATIONYML }}
+
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script_stop: true
+
           script: |
             cd /home/ubuntu/dgsw261st
-            git pull origin main
+            mkdir -p src/main/resources
+            rm -f src/main/resources/application.yml
+            git fetch origin
+            git reset --hard origin/main
+            echo "$APPLICATION_PROPERTIES" > src/main/resources/application.yml
             ./gradlew clean build -x test
             sudo fuser -k -n tcp 80 || true
-            sudo nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
+            JAR_FILE=$(find build/libs -name "*SNAPSHOT.jar" | head -n 1)
+            sudo nohup java -jar "$JAR_FILE" > output.log 2>&1 &
